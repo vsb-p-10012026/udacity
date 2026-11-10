@@ -1,0 +1,34 @@
+flowchart TD
+    Start(["<b>START</b><br/>'Research Acme Corp'"])
+    Orchestrator1["<b>ORCHESTRATOR</b><br/>Parse request, spawn sub-agents"]
+    WebResearcher["<b>Web Researcher</b><br/>(PARALLEL)"]
+    PeopleFinder["<b>People Finder</b><br/>(PARALLEL)"]
+    NewsAnalyst["<b>News Analyst</b><br/>(PARALLEL)"]
+    CompanyProfile["<b>Company Profile</b>"]
+    LeadershipData["<b>Leadership Team Data</b>"]
+    NewsData["<b>Funding & News Data</b>"]
+    Orchestrator2["<b>ORCHESTRATOR</b><br/>Merge results, generate final report"]
+    FinalReport["<b>FINAL REPORT</b><br/>- Company Overview<br/>- Leadership Team<br/>- Funding History<br/>- Tech Stack<br/>- Recent News"]
+
+    Start --> Orchestrator1
+    Orchestrator1 --> WebResearcher
+    Orchestrator1 --> PeopleFinder
+    Orchestrator1 --> NewsAnalyst
+    WebResearcher --> CompanyProfile
+    PeopleFinder --> LeadershipData
+    NewsAnalyst --> NewsData
+    CompanyProfile --> Orchestrator2
+    LeadershipData --> Orchestrator2
+    NewsData --> Orchestrator2
+    Orchestrator2 --> FinalReport
+
+    style Start fill:#e3f2fd,stroke:#333,stroke-width:2px
+    style Orchestrator1 fill:#fff4e6,stroke:#333,stroke-width:2px
+    style WebResearcher fill:#e8f5e9,stroke:#333,stroke-width:2px
+    style PeopleFinder fill:#e8f5e9,stroke:#333,stroke-width:2px
+    style NewsAnalyst fill:#e8f5e9,stroke:#333,stroke-width:2px
+    style CompanyProfile fill:#f3e5f5,stroke:#333,stroke-width:2px
+    style LeadershipData fill:#f3e5f5,stroke:#333,stroke-width:2px
+    style NewsData fill:#f3e5f5,stroke:#333,stroke-width:2px
+    style Orchestrator2 fill:#fff4e6,stroke:#333,stroke-width:2px
+    style FinalReport fill:#c8e6c9,stroke:#333,stroke-width:3px

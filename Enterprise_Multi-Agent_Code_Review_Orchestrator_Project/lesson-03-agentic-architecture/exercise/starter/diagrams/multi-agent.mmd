@@ -1,0 +1,40 @@
+
+graph TB
+
+    classDef entrypoint fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef triage fill:#bbf,stroke:#333,stroke-width:2px;
+    classDef specialized fill:#fbb,stroke:#333,stroke-width:2px;
+    classDef router fill:#ff9,stroke:#333,stroke-width:2px;
+    classDef destination fill:#bfb,stroke:#333,stroke-width:2px;
+
+    Ticket[Incoming Support Ticket]:::entrypoint
+
+    Triage["<b>Triage Agent</b><br/><b>Model:</b> Haiku<br/><b>Tools:</b> Text Classifier, DB Lookup<br/><b>Handles:</b> Categorizes urgency, issue type, and customer tier"]:::triage
+
+    Ticket --> Triage
+
+    subgraph Parallel Specialized Agents
+        Tech["<b>Technical Agent</b><br/><b>Model:</b> Sonnet<br/><b>Tools:</b> Log Analyzer, API Checker<br/><b>Handles:</b> Bugs, errors, system failures"]:::specialized
+        
+        Billing["<b>Billing Agent</b><br/><b>Model:</b> Haiku<br/><b>Tools:</b> Stripe API, Invoice Ledger<br/><b>Handles:</b> Refunds, subscriptions, payments"]:::specialized
+        
+        KB["<b>Knowledge Base Agent</b><br/><b>Model:</b> Haiku<br/><b>Tools:</b> Vector Search, Doc Retriever<br/><b>Handles:</b> FAQs, guides, account setup"]:::specialized
+    end
+
+    Triage --> Tech
+    Triage --> Billing
+    Triage --> KB
+
+    Router["<b>Routing Agent</b><br/><b>Model:</b> Sonnet<br/><b>Tools:</b> Rule Engine, Evaluator<br/><b>Handles:</b> Synthesizes parallel analysis and decides final path"]:::router
+
+    Tech --> Router
+    Billing --> Router
+    KB --> Router
+
+    Auto["<b>Auto-response (~40%)</b><br/>Immediate automated resolution"]:::destination
+    Human["<b>Human Team (~55%)</b><br/>Handled by support agents"]:::destination
+    Escalation["<b>Escalation (~5%)</b><br/>Urgent/VIP management queue"]:::destination
+
+    Router --> Auto
+    Router --> Human
+    Router --> Escalation

@@ -1,0 +1,25 @@
+{
+  "name": "meeting-analyzer-starter",
+  "version": "1.0.0",
+  "description": "Starter: Build a meeting notes analyzer that extracts action items, decisions, and participants using structured outputs",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "npx tsx src/index.ts"
+  },
+  "keywords": [
+    "claude",
+    "agent-sdk",
+    "structured-outputs",
+    "meeting-notes",
+    "action-items"
+  ],
+  "author": "Udacity",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.1.55",
+    "dotenv": "^16.4.5",
+    "zod": "^4.6.7",
+    "zod-to-json-schema": "^3.24.1"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "lesson-13-exercise-starter-computer-use",
+  "version": "1.0.0",
+  "description": "Exercise Starter: Form automation with computer use",
+  "type": "module",
+  "scripts": {
+    "start": "npx tsx src/index.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.52.0",
+    "dotenv": "^17.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}

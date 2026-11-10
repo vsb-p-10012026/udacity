@@ -1,0 +1,20 @@
+Subject: 500 Errors on API Endpoint
+
+Customer: Acme Corp (Enterprise)
+Submitted: 2025-01-17 10:30 AM
+Priority: Not Set
+
+Description:
+We're experiencing 500 Internal Server errors on the /api/v2/users endpoint.
+This started approximately 2 hours ago and is affecting our production application.
+We have about 5,000 active users who cannot access their dashboards.
+
+Error message from our logs:
+"Internal Server Error: Database connection timeout"
+
+This is blocking our business operations. We need this resolved ASAP.
+
+Stack trace:
+at DatabasePool.connect (db.js:45)
+at UserService.getUser (user-service.js:123)
+at /api/v2/users (routes.js:89)

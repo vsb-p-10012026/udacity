@@ -1,0 +1,32 @@
+{
+  "name": "tdd-with-ai-exercise-starter",
+  "version": "1.0.0",
+  "description": "Exercise: Design a TDD Strategy for a Shopping Cart Module",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "npx tsx src/index.ts",
+    "test": "npx vitest run",
+    "test:watch": "npx vitest",
+    "test:coverage": "npx vitest run --coverage"
+  },
+  "keywords": [
+    "claude",
+    "tdd",
+    "test-driven-development",
+    "shopping-cart",
+    "exercise"
+  ],
+  "author": "Udacity",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@vitest/coverage-v8": "^4.0.17",
+    "tsx": "^4.21.0",
+    "typescript": "^5.7.2",
+    "vitest": "^4.0.17"
+  }
+}

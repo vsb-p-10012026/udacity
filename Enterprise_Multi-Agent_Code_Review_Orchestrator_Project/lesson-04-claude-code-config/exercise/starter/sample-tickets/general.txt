@@ -1,0 +1,20 @@
+Subject: How to export data to CSV
+
+Customer: TechStartup Inc (Standard)
+Submitted: 2025-01-17 09:45 AM
+Priority: Not Set
+
+Description:
+Hello,
+
+I'm trying to export our user data to a CSV file for analysis, but I can't
+find the export option in the dashboard.
+
+Is there a way to export data? If so, where can I find this feature?
+
+Also, if we do have export capability, what format options are available
+besides CSV? We might need JSON for our analytics pipeline.
+
+Not urgent, just planning for our quarterly review next month.
+
+Thanks for your help!

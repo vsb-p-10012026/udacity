@@ -1,0 +1,54 @@
+sequenceDiagram
+    autonumber
+    actor Customer
+    participant TS as Ticket System
+    participant Triage as Triage Agent
+    participant CRM as CRM System
+    participant Tech as Technical Agent
+    participant Billing as Billing Agent
+    participant KB as KB Agent
+    participant Router as Routing Agent
+    participant Dest as Destination
+
+    Customer->>TS: Submits Support Ticket
+    TS->>Triage: Forward New Ticket
+    
+    activate Triage
+    Triage->>CRM: Lookup Customer Details & History
+    activate CRM
+    CRM-->>Triage: Return Customer Profile & Tier
+    deactivate CRM
+
+    rect rgb(245, 245, 245)
+    Note over Triage, KB: Parallel Execution Phase
+    par Technical Analysis
+        Triage->>Tech: Analyze logs & errors
+        activate Tech
+        Tech-->>Router: Send Technical Report
+        deactivate Tech
+    and Billing Analysis
+        Triage->>Billing: Check invoice & payment status
+        activate Billing
+        Billing-->>Router: Send Billing Report
+        deactivate Billing
+    and Knowledge Base Search
+        Triage->>KB: Search docs & FAQs
+        activate KB
+        KB-->>Router: Send KB Match & Confidence
+        deactivate KB
+    end
+    end
+
+    activate Router
+    Note over Router: Evaluates confidence, urgency, and tier
+    
+    alt High KB Confidence / Routine
+        Router->>Dest: Route to Auto-Response (~40%)
+    else Moderate Complexity / Standard
+        Router->>Dest: Route to Human Team (~55%)
+    else Critical Urgency / VIP Tier
+        Router->>Dest: Route to Escalation Queue (~5%)
+    end
+    deactivate Router
+
+    Note over TS, Dest: Background SLA Escalation Agent monitors countdown timers continuously

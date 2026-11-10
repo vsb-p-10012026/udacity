@@ -1,0 +1,8 @@
+%% Option A: Single Agent Architecture (provided for reference)
+%% This diagram is complete — no changes needed here.
+%% Render it with: mmdc -i diagrams/single-agent.mmd -o diagrams/single-agent.svg
+
+graph TB
+    Agent["<b>Support Agent</b><br/><br/><b>Tools:</b><br/>- CRM (customer lookup)<br/>- Knowledge Base (search solutions)<br/>- Ticket System (create, update, route)<br/>- Email (send responses)<br/><br/><b>Workflow:</b><br/>1. Read incoming ticket<br/>2. Look up customer in CRM<br/>3. Determine ticket type and urgency<br/>4. Search knowledge base for solutions<br/>5. Either auto-respond OR route to team<br/>6. Update ticket with context"]
+
+    style Agent fill:#e1f5ff,stroke:#333,stroke-width:2px

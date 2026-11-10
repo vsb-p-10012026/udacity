@@ -1,0 +1,24 @@
+flowchart TD
+    classDef startNode fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef processNode fill:#bbf,stroke:#333,stroke-width:2px;
+    classDef parallelNode fill:#fbb,stroke:#333,stroke-width:2px;
+    classDef decisionNode fill:#ff9,stroke:#333,stroke-width:2px;
+    classDef destNode fill:#bfb,stroke:#333,stroke-width:2px;
+
+    Start([Start: New Ticket Received]):::startNode
+
+    Triage["Triage Agent:<br/>- Categorizes ticket type<br/>- Looks up customer in CRM<br/>- Sets SLA deadline by tier"]:::processNode
+
+    Start --> Triage
+
+    Triage -.-> Tech["Technical Agent:<br/>Analyzes errors & logs"]:::parallelNode
+    Triage -.-> Billing["Billing Agent:<br/>Checks invoices & payments"]:::parallelNode
+    Triage -.-> KB["Knowledge Base Agent:<br/>Searches docs & FAQs"]:::parallelNode
+
+    Tech --> Router["Routing Agent:<br/>Evaluates KB confidence,<br/>ticket type, urgency & tier"]:::decisionNode
+    Billing --> Router
+    KB --> Router
+
+    Router --> Auto["Auto-Response (~40%)<br/>- High KB confidence<br/>- Routine queries"]:::destNode
+    Router --> Human["Human Team (~55%)<br/>- Moderate complexity<br/>- Standard support queue"]:::destNode
+    Router --> Escalation["Escalation (~5%)<br/>- Critical urgency<br/>- VIP customer tier"]:::destNode

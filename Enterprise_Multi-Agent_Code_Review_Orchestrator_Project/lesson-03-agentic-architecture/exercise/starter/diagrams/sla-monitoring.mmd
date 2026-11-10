@@ -1,0 +1,21 @@
+graph TB
+    classDef scheduleNode fill:#bbf,stroke:#333,stroke-width:2px;
+    classDef checkNode fill:#ff9,stroke:#333,stroke-width:2px;
+    classDef alertNode fill:#f99,stroke:#333,stroke-width:2px;
+    classDef breachNode fill:#f66,stroke:#333,stroke-width:2px;
+
+    Schedule["<b>SLA Monitoring Agent</b><br/><b>Run Frequency:</b> Every 5 minutes<br/><b>Model:</b> Claude 3 Haiku<br/><b>Tools:</b> Ticket DB Query, Slack/Email Webhook"]:::scheduleNode
+
+    Query[Query Open Tickets & Compare Time Remaining vs SLA Deadline]:::checkNode
+
+    Schedule --> Query
+
+    Query --> CheckThreshold{SLA Threshold Status?}:::checkNode
+
+    CheckThreshold -- Safe (> 20% time left) --> Wait[Continue Monitoring / Sleep]:::scheduleNode
+
+    CheckThreshold -- Close to Breach (< 20% left) --> AlertLead["<b>Alert Team Lead</b><br/>- Warning notification sent<br/>- Priority re-queue"]:::alertNode
+
+    CheckThreshold -- Breached (0% left) --> Breach["<b>SLA Breach Escalation</b><br/>- Escalate directly to Manager<br/>- Log compliance violation audit record"]:::breachNode
+
+    Wait --> Schedule

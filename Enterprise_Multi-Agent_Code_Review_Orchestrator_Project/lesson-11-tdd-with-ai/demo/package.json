@@ -1,0 +1,32 @@
+{
+  "name": "tdd-with-ai-demo",
+  "version": "1.0.0",
+  "description": "Demo: AI-Accelerated Test-Driven Development with Claude Code",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "npx tsx src/index.ts",
+    "test": "npx vitest run",
+    "test:watch": "npx vitest",
+    "test:coverage": "npx vitest run --coverage"
+  },
+  "keywords": [
+    "claude",
+    "tdd",
+    "test-driven-development",
+    "ai-assisted",
+    "testing"
+  ],
+  "author": "Udacity",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@vitest/coverage-v8": "^4.0.17",
+    "tsx": "^4.21.0",
+    "typescript": "^5.7.2",
+    "vitest": "^4.0.17"
+  }
+}

@@ -1,0 +1,36 @@
+sequenceDiagram
+    actor User
+    participant Orch as Orchestrator
+    participant Web as Web Researcher
+    participant People as People Finder
+    participant News as News Analyst
+
+    User->>Orch: Research "Acme Corp"
+    activate Orch
+
+    Note over Orch: Parse request and<br/>spawn agents in parallel
+
+    par Parallel Execution
+        Orch->>Web: research(companyName)
+        activate Web
+        and
+        Orch->>People: findLeadership(companyName)
+        activate People
+        and
+        Orch->>News: analyzeNews(companyName)
+        activate News
+    end
+
+    Note over Web,News: Agents work independently
+
+    Web-->>Orch: Company Profile Data
+    deactivate Web
+    People-->>Orch: Leadership Team Data
+    deactivate People
+    News-->>Orch: Funding & News Data
+    deactivate News
+
+    Note over Orch: Merge results and<br/>compile final report
+
+    Orch-->>User: Comprehensive Report
+    deactivate Orch

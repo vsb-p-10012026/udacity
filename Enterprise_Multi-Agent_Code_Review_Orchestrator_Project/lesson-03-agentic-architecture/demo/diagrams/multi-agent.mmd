@@ -1,0 +1,19 @@
+graph TB
+    Orchestrator["<b>Orchestrator</b><br/>Coordinates research and compiles report"]
+    WebResearcher["<b>Web Researcher Agent</b><br/><br/><b>Tools:</b><br/>- WebSearch<br/>- WebFetch<br/><br/><b>Finds:</b><br/>- Company info<br/>- Tech stack<br/>- Products"]
+    PeopleFinder["<b>People Finder</b><br/><br/><b>Tools:</b><br/>- Search<br/>- WebFetch<br/><br/><b>Finds:</b><br/>- Execs<br/>- Titles<br/>- LinkedIn"]
+    NewsAnalyst["<b>News Analyst</b><br/><br/><b>Tools:</b><br/>- WebSearch<br/>- Read<br/><br/><b>Finds:</b><br/>- Funding<br/>- Press<br/>- Acquisitions"]
+    Report["<b>Combined Report</b><br/>from all agents"]
+
+    Orchestrator --> WebResearcher
+    Orchestrator --> PeopleFinder
+    Orchestrator --> NewsAnalyst
+    WebResearcher --> Report
+    PeopleFinder --> Report
+    NewsAnalyst --> Report
+
+    style Orchestrator fill:#fff4e6,stroke:#333,stroke-width:2px
+    style WebResearcher fill:#e8f5e9,stroke:#333,stroke-width:2px
+    style PeopleFinder fill:#e8f5e9,stroke:#333,stroke-width:2px
+    style NewsAnalyst fill:#e8f5e9,stroke:#333,stroke-width:2px
+    style Report fill:#f3e5f5,stroke:#333,stroke-width:2px
